@@ -1,0 +1,20 @@
+<div class="input-group mb-3">
+  <label class="sr-only" for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+
+  <input class="form-control"
+         type="text"
+         id="{{ form.phone.id_for_label }}"
+         placeholder="{{ form.phone.label }}"
+         name="{{ form.phone.html_name }}"
+         value="{{ form.phone.value|default_if_none:'' }}">
+  <div class="input-group-append">
+    <div class="input-group-text">
+      <span class="fas fa-phone"></span>
+    </div>
+  </div>
+  {% if form.phone.errors %}
+    <div id="{{ form.phone.id_for_label }}-feedback" class="invalid-feedback">
+      {{ form.phone.errors.as_ul }}
+    </div>
+  {% endif %}
+</div>

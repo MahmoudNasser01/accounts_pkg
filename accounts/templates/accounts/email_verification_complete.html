@@ -1,0 +1,7 @@
+{% load i18n %}
+{% if verified %}
+    <h1>{% trans 'Your Accountis verified successfully' %}</h1>
+{% else %}
+    <h1>{% trans 'Somthing goes wrong, please try to contact customer service' %}</h1>
+
+{% endif %}

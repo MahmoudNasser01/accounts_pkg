@@ -1,0 +1,24 @@
+<div class="input-group mb-3 date date-field">
+  <label class="sr-only" for="{{ form.birthdate.id_for_label }}">{{ form.birthdate.label }}</label>
+  <div class="input-group date date-field" id="{{ form.birthdate.id_for_label }}-input-group"
+       data-target-input="nearest">
+    <input type="text"
+           id="{{ form.birthdate.id_for_label }}"
+           name="{{ form.birthdate.html_name }}"
+           placeholder="{{ form.birthdate.label }}"
+           value="{{ form.birthdate.value|default_if_none:'' }}"
+           class="form-control datetimepicker-input{% if form.birthdate.errors %} is-invalid{% endif %}"
+           data-target="#{{ form.birthdate.id_for_label }}-input-group"/>
+    <div class="input-group-append" data-target="#{{ form.birthdate.id_for_label }}-input-group"
+         data-toggle="datetimepicker">
+      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+    </div>
+  </div>
+  {% if form.birthdate.errors %}
+    <div id="{{ form.birthdate.id_for_label }}-feedback" class="invalid-feedback">
+      {{ form.birthdate.errors.as_ul }}
+    </div>
+  {% endif %}
+</div>
+
+

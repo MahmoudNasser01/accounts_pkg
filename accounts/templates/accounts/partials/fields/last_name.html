@@ -1,0 +1,21 @@
+<div class="mb-3">
+  <label class="sr-only" for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+  <div class="input-group">
+    <input type="text"
+           id="{{ form.last_name.id_for_label }}"
+           placeholder="{{ form.last_name.label }}"
+           name="{{ form.last_name.html_name }}"
+           value="{{ form.last_name.value|default_if_none:'' }}"
+           class="form-control{% if form.last_name.errors %} is-invalid{% endif %}">
+    <div class="input-group-append">
+      <span class="input-group-text">
+              <span class="fas fa-user"></span>
+      </span>
+    </div>
+  </div>
+   {% if form.last_name.errors %}
+    <div id="{{ form.last_name.id_for_label }}-feedback" class="invalid-feedback">
+      {{ form.last_name.errors.as_ul }}
+    </div>
+  {% endif %}
+</div>

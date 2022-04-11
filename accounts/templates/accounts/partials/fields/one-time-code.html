@@ -1,0 +1,18 @@
+<div class="field-wrapper field-wrapper--full">
+    <label class="field-wrapper__label" for="{{ form.code.id_for_label }}">{{ form.code.label }}</label>
+    <div class="field-wrapper__content">
+        <input class="field field--with-icon"
+               type="text"
+               id="{{ form.code.id_for_label }}"
+               placeholder="{{ form.code.label }}"
+               name="{{ form.code.html_name }}"
+                value="{{ form.code.value|default_if_none:'' }}">
+    </div>
+    {% if form.code.errors %}
+        <ul class="field-wrapper__messages">
+            {% for error in field.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>

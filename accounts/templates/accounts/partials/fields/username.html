@@ -1,0 +1,20 @@
+<div class="input-group mb-3">
+  <label class="sr-only" for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+  <input
+      type="text"
+      id="{{ form.username.id_for_label }}"
+      placeholder="{{ form.username.label }}"
+      name="{{ form.username.html_name }}"
+      class="form-control{% if form.username.errors %} is-invalid{% endif %}"
+      value="{{ form.username.value|default_if_none:'' }}">
+  <div class="input-group-append">
+    <div class="input-group-text">
+      <span class="fas fa-user"></span>
+    </div>
+  </div>
+  {% if form.username.errors %}
+    <div id="{{ form.username.id_for_label }}-feedback" class="invalid-feedback">
+      {{ form.username.errors.as_ul }}
+    </div>
+  {% endif %}
+</div>

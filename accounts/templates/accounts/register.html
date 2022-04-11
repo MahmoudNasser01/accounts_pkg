@@ -1,0 +1,53 @@
+{% extends 'accounts/auth_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block styles %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+{% endblock %}
+
+{% block page_title %}
+  {% translate "Login" %}
+{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">{% translate 'Register a new membership' %}</p>
+
+      <form method="post" action="{% url 'register' %}" class="py-3">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger alert-dismissible">
+            <h5><i class="icon fas fa-ban"></i>{% translate 'Alert!' %}</h5>
+            {% for key, value in form.non_field_errors.items %}
+              {{ value }}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% include 'accounts/partials/fields/username.html' %}
+        {% include 'accounts/partials/fields/phone.html' %}
+        {% include 'accounts/partials/fields/email.html' %}
+        {% include 'accounts/partials/fields/password1.html' %}
+        {% include 'accounts/partials/fields/password2.html' %}
+
+        <div class="row">
+          <div class="col-8">
+            {% include 'accounts/partials/fields/terms&conditions.html' %}
+          </div>
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">{% translate 'Register' %}</button>
+          </div>
+        </div>
+      </form>
+      {% include 'accounts/partials/social_login.html' %}
+
+      <p class="mb-0">
+        <a href="{% url 'login' %}" class="text-center">{% translate 'I already have a membership' %}</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'profile_base.html' %}
+{% load static i18n %}
+
+{% block page_title %}
+  {% translate 'Update Email' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary">
+          <form method="POST">
+               {% csrf_token %}
+           <div class="card-body">
+          {% include 'django/forms/form.html' with form=form %}
+              <button type="submit" class="btn btn-primary">{% translate 'Submit' %}</button>
+                <a class="btn btn-default float-right" href="{% url 'site:profile:index' %}">{% translate 'Cancel' %}</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

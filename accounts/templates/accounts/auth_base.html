@@ -1,0 +1,26 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% translate "Accounts" %} | {% block page_title %}{% endblock %}</title>
+  {% block styles %}{% endblock %}
+</head>
+<body class="hold-transition login-page">
+
+<div class="login-box">
+  <div class="login-logo">
+  </div>
+  {% block content %}{% endblock %}
+</div>
+
+{% block scripts %}
+  <script>
+    $('.date-field').datetimepicker({
+      format: 'L'
+    });
+  </script>
+{% endblock %}
+</body>
+</html>

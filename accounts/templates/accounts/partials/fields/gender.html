@@ -1,0 +1,22 @@
+<div class="input-group mb-3">
+  <label class="sr-only" for="{{ form.gender.id_for_label }}">{{ form.gender.label }}</label>
+  <select class="form-control"
+          type="gender"
+          id="{{ form.gender.id_for_label }}"
+          name="{{ form.gender.html_name }}">
+    {% for value, label in form.fields.gender.choices %}
+      <option value="{{ value }}"{% if user_form.status.value == value %}
+              selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+  </select>
+  <div class="input-group-append">
+    <div class="input-group-text">
+      <span class="fas fa-transgender"></span>
+    </div>
+  </div>
+  {% if form.gender.errors %}
+    <div id="{{ form.gender.id_for_label }}-feedback" class="invalid-feedback">
+      {{ form.gender.errors.as_ul }}
+    </div>
+  {% endif %}
+</div>

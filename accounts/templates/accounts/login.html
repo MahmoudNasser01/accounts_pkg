@@ -1,0 +1,31 @@
+{% extends 'auth_base.html' %}
+{% load static i18n %}
+
+
+{% block styles %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+{% endblock %}
+
+{% block page_title %}
+ {% translate "Login" %}
+{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">{% translate 'Sign in to start your session' %}</p>
+
+      {% include 'users/auth/partials/login-tabs.html' %}
+
+      {% include 'users/auth/partials/social_login.html' %}
+
+      <p class="mb-1">
+        <a href="{% url "password_reset" %}">{% translate 'I forgot my password' %}</a>
+      </p>
+      <p class="mb-0">
+        <a href="{% url 'register' %}" class="text-center">{% translate 'Register a new membership' %}</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}
